@@ -1,6 +1,8 @@
-const http = require("http");
+var http = require("http");
 
-const httpServer = http.createServer((req, res) => {
+const httpServer = http.createServer(handleServer);
+
+function handleServer(req, res) {
   if (req.url === "/welcome") {
     res.write("Welcome to Dominos!");
     res.setStatus(200);
@@ -13,6 +15,6 @@ const httpServer = http.createServer((req, res) => {
     res.setStatus(404);
     res.send();
   }
-});
+}
 httpServer.listen(8081);
 module.exports = httpServer;
